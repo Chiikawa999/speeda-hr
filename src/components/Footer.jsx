@@ -60,6 +60,19 @@ function Footer() {
                     </div>
 
                 </div>
+
+                {/* 新增：底部版權宣告與隱私權政策連結 */}
+                <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center mt-5 pt-4 border-top border-white-15 text-white-50 fs-6">
+                    <div>
+                        © {new Date().getFullYear()} 速必達人力派遣 版權所有
+                    </div>
+                    <div className="mt-2 mt-sm-0">
+                        <Link to="/privacy" className="text-white-50 text-decoration-none">
+                            隱私權政策
+                        </Link>
+                    </div>
+                </div>
+
             </div>
         </footer>
     );

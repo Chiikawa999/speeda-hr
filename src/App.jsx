@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
+import Privacy from './pages/Privacy';
 import './App.css';
 import './assets/all.scss';
 
@@ -15,15 +16,20 @@ const titleMap = {
   '/': '速必達人力派遣 | 首頁',
   '/about': '速必達人力派遣 | 關於我們',
   '/services': '速必達人力派遣 | 服務項目',
-  '/contact': '速必達人力派遣 | 聯絡我們'
+  '/contact': '速必達人力派遣 | 聯絡我們',
+  '/privacy': '速必達人力派遣 | 隱私權政策'
 };
 
-// 監聽路由並自動更換 document.title 的組件
+// 監聽路由：自動更換標題 + 捲動回頁面最頂部
 function TitleUpdater() {
   const location = useLocation();
 
   useEffect(() => {
+    // 1. 更新分頁標題
     document.title = titleMap[location.pathname] || '速必達人力派遣';
+
+    // ⭐ 2. 切換頁面時自動回到最頂端
+    window.scrollTo(0, 0);
   }, [location]);
 
   return null;
@@ -32,7 +38,7 @@ function TitleUpdater() {
 function App() {
   return (
     <Router>
-      {/* 放入標題更新器 (監聽路由變化) */}
+      {/* 放入頁面控制器 (監聽路由變化：置頂與更換標題) */}
       <TitleUpdater />
 
       {/* 導覽列 */}
@@ -46,6 +52,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy" element={<Privacy />} />
 
         {/* 防錯重定向 */}
         <Route path="*" element={<Navigate to="/" replace />} />

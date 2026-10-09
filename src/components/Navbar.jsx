@@ -27,7 +27,7 @@ function Navbar() {
                 </div>
             </div>
 
-            {/* 下方：白色導覽選單 (使用 ms-auto 靠右對齊) */}
+            {/* 下方：白色導覽選單  */}
             <nav className="navbar navbar-expand navbar-custom py-2.5">
                 <div className="container">
                     <ul className="navbar-nav ms-auto d-flex align-items-center gap-4 list-unstyled mb-0">

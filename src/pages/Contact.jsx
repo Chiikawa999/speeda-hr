@@ -18,7 +18,7 @@ export default function Contact() {
                     </p>
                 </div>
 
-                {/* 高對比日系 POP 潮流名片 */}
+                {/* 名片 */}
                 <div className="jp-pop-card bg-white rounded-4 border border-3 border-dark p-4 p-md-5 position-relative shadow-pop">
 
                     {/* 頂部品牌區 */}

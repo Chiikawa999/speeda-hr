@@ -39,7 +39,7 @@ export default function About() {
         <main className="jp-about-page py-5">
             <div className="container py-md-3">
 
-                {/* 1. 頁面日系 Header */}
+                {/*  Header */}
                 <div className="text-center mb-5">
                     <span className="jp-badge mb-2">ABOUT SPEEDA HR</span>
                     <h1 className="jp-title fw-bold text-dark display-5">關於我們</h1>
@@ -48,11 +48,11 @@ export default function About() {
                     </p>
                 </div>
 
-                {/* 2. 照片 + 品牌理念 雙欄區塊 */}
+                {/*  雙欄區塊 */}
                 <div className="jp-hero-card bg-white rounded-4 p-4 p-md-5 shadow-sm border mb-5">
                     <div className="row align-items-center g-4 g-lg-5">
 
-                        {/* 左側：日系疊加照片框 */}
+                        {/* 左側：疊加照片框 */}
                         <div className="col-lg-5">
                             <div className="jp-photo-stack position-relative">
                                 {/* 主照片 */}
@@ -64,7 +64,7 @@ export default function About() {
                                         style={{ minHeight: '300px', maxHeight: '560px' }}
                                     />
                                 </div>
-                                {/* 裝飾小卡／副圖 */}
+                                {/* 副圖 */}
                                 <div className="sub-photo-badge rounded-3 p-3 bg-white shadow border d-none d-sm-flex align-items-center gap-2">
                                     <div className="badge-icon-circle">
                                         <i className="bi bi-patch-check-fill text-danger fs-5"></i>
@@ -136,7 +136,7 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* 4. 配合機構與專營項目（雙卡排版，左側框框替換為 circle-down-solid 圖示） */}
+                {/* 配合機構與專營項目 */}
                 <div className="row g-4 mb-5">
                     {/* 左卡：配合對象 */}
                     <div className="col-lg-6">
@@ -190,7 +190,7 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* 5. 嚴選人才 ‧ 四大品質把關 */}
+                {/* 嚴選人才 ‧ 四大品質把關 */}
                 <div className="bg-white rounded-4 p-4 p-md-5 shadow-sm border mb-5">
                     <div className="text-center mb-4">
                         <span className="jp-pill-tag mb-2">QUALITY GUARANTEE</span>
@@ -211,7 +211,7 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* 6. 專業派工 ‧ 五大標準流程 */}
+                {/* 專業派工 ‧ 五大標準流程 */}
                 <div className="bg-white rounded-4 p-4 p-md-5 shadow-sm border mb-5">
                     <div className="text-center mb-4">
                         <span className="jp-pill-tag mb-2">SERVICE FLOW</span>

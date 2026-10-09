@@ -72,7 +72,7 @@ export default function SectionServices() {
                         <div key={item.id} className="col-12 col-md-6">
                             <div className="service-card h-100 shadow-sm border-0 position-relative bg-white">
 
-                                {/* ⭐ 公仔插畫（加上動態 ID Class 便於個別定位微調） */}
+
                                 <div className={`character-wrapper character-${item.id}`}>
                                     <img
                                         src={item.imgUrl}

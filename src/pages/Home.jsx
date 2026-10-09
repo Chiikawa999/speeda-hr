@@ -1,4 +1,13 @@
+import SectionServices from '../components/SectionServices';
+import SectionAbout from '../components/SectionAbout';
+
 function Home() {
-    return <div className="container my-5"><h1>首頁 - 速必達 HR</h1></div>;
+    return (
+        <main>
+            <SectionServices />
+            <SectionAbout />
+        </main>
+    );
 }
+
 export default Home;

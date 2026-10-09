@@ -1,1 +1,893 @@
 @import "bootstrap/scss/bootstrap";
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+#root {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+
+$primary-blue: #284375;
+
+// 頁首上方深藍色區塊
+.header-top {
+    background-color: $primary-blue;
+
+    .logo-title {
+        font-size: 1.75rem;
+        line-height: 1;
+        font-weight: 700;
+    }
+
+    .logo-subtitle {
+        font-size: 1.25rem;
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    .logo-icon-person {
+        height: 60px;
+        object-fit: contain;
+        position: relative;
+        z-index: 2;
+    }
+
+    .logo-icon-arrow {
+        height: 45px;
+        object-fit: contain;
+        margin-left: -22px;
+        position: relative;
+        z-index: 1;
+    }
+}
+
+// 頁首下方選單區塊
+$brand-blue: #2f4875;
+$brand-hover-blue: #1d3054;
+$brand-yellow: #f1b831;
+
+.navbar-custom {
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    .custom-link {
+        color: #4a5568;
+        font-weight: 500;
+        font-size: 1.05rem;
+        padding: 0.5rem 0;
+        position: relative;
+        transition: color 0.3s ease;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2.5px;
+            background-color: $brand-blue;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateX(-50%);
+        }
+
+        &:hover,
+        &.active {
+            color: $brand-blue;
+            font-weight: 600;
+
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+    .btn-cta {
+        background-color: $brand-blue;
+        color: #ffffff;
+        font-weight: 500;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+
+        &:hover,
+        &.active {
+            background-color: $brand-hover-blue;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(47, 72, 117, 0.3);
+        }
+    }
+}
+
+.footer-dark {
+    background-color: $primary-blue;
+    color: #ffffff;
+
+    .border-white-15 {
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .brand-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+
+    .brand-subtitle {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+
+    .logo-icon-person {
+        height: 70px;
+        object-fit: contain;
+        z-index: 2;
+    }
+
+    .logo-icon-arrow {
+        height: 50px;
+        object-fit: contain;
+        margin-left: -22px;
+        z-index: 1;
+    }
+
+    .contact-card {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        transition: all 0.25s ease;
+        min-width: 0; // ⭐ 允許 Flex 子項壓縮，防超出
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .icon-box {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0; // ⭐ 確保圖示不被壓縮
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            word-break: break-all; // ⭐ 當卡片極窄時，長 Email 自動換行不溢出
+
+            // ⭐ 中等/窄螢幕下微調字型大小，優先讓 Email 在單行美觀顯示
+            @media (max-width: 1199.98px) {
+                font-size: 0.95rem;
+            }
+
+            @media (max-width: 575.98px) {
+                font-size: 1.05rem;
+            }
+        }
+    }
+}
+
+// 1. 首頁卡片與公仔對齊
+$highlight-green: #cbe092;
+$card-border-radius: 20px;
+$primary-color: #2f4875;
+
+.service-highlight-section {
+    background-color: #f8f9fa;
+
+    .section-title {
+        color: #2b2b2b;
+        font-size: 1.65rem;
+        line-height: 1.6;
+
+        @media (min-width: 576px) {
+            font-size: 2rem;
+        }
+
+        .highlight-text {
+            background: linear-gradient(to top, $highlight-green 45%, transparent 45%);
+            padding: 0 6px;
+            border-radius: 2px;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+        }
+    }
+
+    .service-card {
+        border-radius: $card-border-radius;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-bottom-right-radius: 35px;
+
+        &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+
+            .character-img {
+                transform: scale(1.05);
+            }
+
+            .btn-more {
+                color: $primary-color;
+
+                i {
+                    transform: translateX(4px);
+                }
+            }
+        }
+    }
+
+    @media (min-width: 576px) {
+        .service-card {
+            padding: 2rem 2rem 1.5rem 120px;
+            margin-left: 25px;
+        }
+
+        .character-wrapper {
+            position: absolute;
+            left: -35px;
+            bottom: -5px;
+            width: 130px;
+            height: 110%;
+            display: flex;
+            align-items: flex-end;
+            pointer-events: none;
+
+            &.character-event,
+            &.character-labor,
+            &.character-operator,
+            &.character-temp {
+                left: -18px;
+            }
+
+            &.character-cleaner,
+            &.character-demolition {
+                left: -32px;
+            }
+        }
+
+        .character-img {
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        .service-card {
+            padding: 1.25rem 1.25rem 1.25rem 80px;
+            margin-left: 15px;
+            text-align: left;
+        }
+
+        .character-wrapper {
+            position: absolute;
+            left: -18px;
+            bottom: 0;
+            width: 85px;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            pointer-events: none;
+
+            &.character-event,
+            &.character-labor,
+            &.character-operator,
+            &.character-temp {
+                left: -8px;
+            }
+
+            &.character-cleaner,
+            &.character-demolition {
+                left: -16px;
+            }
+        }
+
+        .character-img {
+            max-height: 95%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+        }
+    }
+
+    .btn-more {
+        color: #6c757d;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: all 0.22s ease;
+
+        i {
+            transition: transform 0.2s ease;
+        }
+    }
+}
+
+// 2. 公司簡介單一卡片樣式
+$brand-navy: #2f4875;
+$brand-blue-light: #eef3fb;
+$brand-gold: #f1b831;
+
+.about-custom-section {
+    background: #f8fafc;
+    position: relative;
+
+    .bg-glow-1 {
+        position: absolute;
+        top: -80px;
+        left: -80px;
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(circle, rgba(47, 72, 117, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .bg-glow-2 {
+        position: absolute;
+        bottom: -80px;
+        right: -80px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(241, 184, 49, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .about-badge {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: $brand-navy;
+        background: $brand-blue-light;
+        padding: 6px 16px;
+        border-radius: 30px;
+    }
+
+    .about-title {
+        color: #1e293b;
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+    }
+
+    .brand-statement-card {
+        background: linear-gradient(135deg, $brand-navy 0%, #1d3054 100%);
+        color: #ffffff;
+        padding: 2.5rem 3rem;
+        border-radius: 24px;
+        position: relative;
+        box-shadow: 0 15px 35px rgba(47, 72, 117, 0.15);
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: $brand-gold;
+        }
+
+        .statement-quote-mark {
+            position: absolute;
+            right: 20px;
+            bottom: -20px;
+            font-size: 9rem;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.05);
+            font-family: Georgia, serif;
+            user-select: none;
+        }
+
+        .statement-text {
+            font-size: 1.1rem;
+            line-height: 1.95;
+            margin-bottom: 0;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 575.98px) {
+            padding: 1.75rem 1.5rem;
+            border-radius: 18px;
+
+            .statement-text {
+                font-size: 0.98rem;
+                line-height: 1.8;
+            }
+        }
+    }
+
+    .about-feature-box {
+        background: #ffffff;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        padding: 2.25rem 2rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+            border-color: rgba(47, 72, 117, 0.25);
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.25rem;
+
+            .feature-icon-circle {
+                width: 60px;
+                height: 60px;
+                min-width: 48px;
+                min-height: 48px;
+                border-radius: 12px;
+                background-color: #eef3fb;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                overflow: hidden;
+
+                img,
+                .feature-icon-img {
+                    width: 45px;
+                    height: 45px;
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+                    display: block;
+                }
+            }
+
+            .feature-title {
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: #1e293b;
+                margin-bottom: 0;
+            }
+        }
+
+        .feature-body {
+            color: #475569;
+            font-size: 1.02rem;
+            line-height: 1.85;
+            margin-bottom: 0;
+            letter-spacing: 0.3px;
+        }
+
+        @media (max-width: 575.98px) {
+            padding: 1.5rem;
+
+            .feature-body {
+                font-size: 0.92rem;
+                line-height: 1.75;
+            }
+        }
+    }
+}
+
+// 3. 關於我們頁面 (.jp-about-page)
+.jp-about-page {
+    background-color: #fcfaf7;
+
+    .max-w-700 {
+        max-width: 700px;
+    }
+
+    .jp-badge {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #e86d52;
+        background-color: rgba(232, 109, 82, 0.1);
+        padding: 6px 18px;
+        border-radius: 50px;
+    }
+
+    .jp-pill-tag {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #1f3763;
+        background-color: #edf2f9;
+        padding: 4px 14px;
+        border-radius: 20px;
+    }
+
+    .jp-feature-chip {
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: #334155;
+        background-color: #f1f5f9;
+        padding: 5px 12px;
+        border-radius: 6px;
+    }
+
+    .jp-icon-box {
+        width: 48px;
+        height: 48px;
+        background-color: #edf2f9;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.accent {
+            background-color: rgba(232, 109, 82, 0.12);
+        }
+    }
+
+    .jp-service-chip {
+        font-size: 0.85rem;
+        color: #4a5568;
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        padding: 5px 12px;
+        border-radius: 50px;
+    }
+
+    // 浮動卡片樣式
+    .jp-photo-stack {
+        position: relative;
+        margin-bottom: 1.25rem;
+
+        .main-photo-frame {
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .sub-photo-badge {
+            position: absolute;
+            bottom: -50px;
+            left: 170px;
+            z-index: 2;
+            background-color: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            padding: 10px 16px;
+            border-radius: 12px;
+
+            .badge-icon-circle {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                background-color: rgba(232, 109, 82, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    // 三大經營承諾卡片勾勾尺寸限定
+    .jp-promise-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-color: rgba(0, 0, 0, 0.06);
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .promise-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background-color: #edf2f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+
+            img,
+            .promise-icon-img {
+                width: 28px;
+                height: 28px;
+                max-width: 28px;
+                max-height: 28px;
+                object-fit: contain;
+                display: block;
+            }
+        }
+    }
+}
+
+// 4. 服務項目條列頁面樣式
+.jp-list-services-page {
+    background-color: #fcfaf7;
+
+    .jp-hero-section {
+        position: relative;
+        border-color: rgba(0, 0, 0, 0.06);
+
+        .hero-bg-img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-size: cover;
+            background-position: center right;
+            z-index: 0;
+
+            @media (max-width: 991px) {
+                width: 100%;
+                height: 100%;
+                background-position: center;
+            }
+        }
+
+        .hero-bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #ffffff 50%, rgba(255, 255, 255, 0.25) 100%);
+            z-index: 0;
+
+            @media (max-width: 991px) {
+                background: linear-gradient(180deg, #ffffff 40%, rgba(255, 255, 255, 0.8) 100%);
+            }
+        }
+    }
+
+    .jp-badge {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #e86d52;
+        background-color: rgba(232, 109, 82, 0.1);
+        padding: 6px 18px;
+        border-radius: 50px;
+    }
+
+    .jp-tag-pill {
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: #334155;
+        background-color: #f1f5f9;
+        padding: 5px 12px;
+        border-radius: 6px;
+    }
+
+    .category-section {
+        .tracking-wider {
+            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+        }
+
+        .list-group-flush .service-row-item {
+            background-color: transparent;
+            border-bottom-color: rgba(0, 0, 0, 0.08);
+            padding-top: 1.25rem;
+            padding-bottom: 1.5rem;
+            transition: all 0.25s ease;
+
+            &:hover {
+                background-color: #ffffff;
+                padding-left: 1.5rem;
+                border-left: 4px solid #e86d52;
+
+                .bi-chevron-right {
+                    transform: translateX(3px);
+                }
+            }
+
+            .bi-chevron-right {
+                transition: transform 0.2s ease;
+            }
+
+            .item-tags-info {
+                @media (max-width: 767px) {
+                    margin-top: 0.75rem;
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+
+        .jp-list-tag {
+            font-size: 0.82rem;
+            color: #1f3763;
+            background-color: #edf2f9;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+    }
+
+    .jp-contact-card {
+        border-color: rgba(0, 0, 0, 0.08);
+
+        .contact-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #e86d52;
+            background-color: rgba(232, 109, 82, 0.1);
+            padding: 4px 14px;
+            border-radius: 50px;
+        }
+
+        .contact-title {
+            color: #1f3763;
+        }
+
+        .contact-desc {
+            color: #64748b;
+        }
+
+        .contact-item-link {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+
+            &:hover {
+                background-color: #edf2f9;
+                border-color: #1f3763;
+                transform: translateY(-2px);
+            }
+
+            .icon-box {
+                width: 48px;
+                height: 48px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+
+                img {
+                    width: 26px;
+                    height: 26px;
+                    object-fit: contain;
+                }
+
+                &.phone-icon-bg {
+                    background-color: rgba(232, 109, 82, 0.12);
+                    color: #e86d52;
+                }
+
+                &.line-icon-bg {
+                    background-color: rgba(204, 241, 163, 0.468);
+                    color: #06c755;
+                }
+
+                &.mail-icon-bg {
+                    background-color: rgba(76, 190, 194, 0.12);
+                    color: #1f3763;
+                }
+            }
+
+            .contact-label {
+                display: block;
+                font-size: 0.82rem;
+                color: #64748b;
+                font-weight: 500;
+            }
+
+            .contact-value {
+                display: block;
+                font-size: 1.1rem;
+                color: #1f3763;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+            }
+        }
+    }
+}
+
+// 5. 日系 POP 高對比鮮艷風格聯絡頁面 
+.jp-vibrant-contact-page {
+    background-color: #f0f4f8;
+}
+
+// 
+.fw-black {
+    font-weight: 900 !important;
+}
+
+// 立體 POP 陰影
+.shadow-pop {
+    box-shadow: 8px 8px 0px #1e293b !important;
+}
+
+// 名片本體與按鈕互動)
+.jp-pop-card {
+    border-color: #1e293b !important;
+
+    .pop-contact-btn {
+        background-color: #ffffff;
+        box-shadow: 4px 4px 0px #1e293b;
+        transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+        &.phone:hover {
+            background-color: #fff1f0;
+            border-color: #ff4d4f !important;
+            transform: translate(-3px, -3px);
+            box-shadow: 7px 7px 0px #ff4d4f;
+        }
+
+        &.mail:hover {
+            background-color: #f0fdf4;
+            border-color: #198754 !important;
+            transform: translate(-3px, -3px);
+            box-shadow: 7px 7px 0px #198754;
+        }
+
+        /* 紅框與綠框 Icon 容器 */
+        .pop-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 2px 2px 0px #1e293b;
+            overflow: hidden;
+
+            img,
+            .icon-img {
+                width: 26px !important;
+                height: 26px !important;
+                max-width: 26px !important;
+                max-height: 26px !important;
+                object-fit: contain;
+                display: block;
+            }
+        }
+    }
+}

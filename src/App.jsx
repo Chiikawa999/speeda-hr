@@ -1,31 +1,60 @@
-
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { HashRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
-import './App.css'
+import './App.css';
+import './assets/all.scss';
 
-function App() {
+// 分頁標題
+const titleMap = {
+  '/': '速必達人力派遣 | 首頁',
+  '/about': '速必達人力派遣 | 關於我們',
+  '/services': '速必達人力派遣 | 服務項目',
+  '/contact': '速必達人力派遣 | 聯絡我們'
+};
 
+// 監聽路由並自動更換 document.title 的組件
+function TitleUpdater() {
+  const location = useLocation();
 
-  return (
-    <>
-      <Router>
-        {/* 全站共用導覽列 */}
-        <Navbar />
+  useEffect(() => {
+    document.title = titleMap[location.pathname] || '速必達人力派遣';
+  }, [location]);
 
-        {/* 根據 URL 切換顯示的頁面內容 */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Router>
-    </>
-  )
+  return null;
 }
 
-export default App
+function App() {
+  return (
+    <Router>
+      {/* 放入標題更新器 (監聽路由變化) */}
+      <TitleUpdater />
+
+      {/* 導覽列 */}
+      <Navbar />
+
+      <Routes>
+        {/* Home 首頁 */}
+        <Route path="/" element={<Home />} />
+
+        {/* 其他頁面路由 */}
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+
+        {/* 防錯重定向 */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+
+      {/* 頁尾 */}
+      <Footer />
+    </Router>
+  );
+}
+
+export default App;

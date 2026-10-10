@@ -38,8 +38,8 @@ const serviceList = [
     },
     {
         id: 'demolition',
-        title: '拆除工',
-        description: '牆面打石拆除、室內舊裝修拆除、廢棄物搬運清運輔助，施工經驗豐富配合度高。',
+        title: '包裝員',
+        description: '提供工廠、倉儲及電商出貨之專業包裝支援，熟悉產品裝盒、貼標封膜、折紙箱及裝箱封膠作業。手腳俐落、細心專注。',
         imgUrl: demolitionImg,
         link: '/services'
     },

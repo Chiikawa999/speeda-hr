@@ -17,8 +17,8 @@ const serviceList = [
     },
     {
         id: 'labor',
-        title: '粗工',
-        description: '建築工地雜務處理、拆除後現場清理、重物/設備搬運、進撤場物料搬運、粗裝修工程輔助。',
+        title: '進出貨、理貨人員',
+        description: '倉儲物流進貨、理貨、撿貨、出貨、盤點人員。',
         imgUrl: laborImg,
         link: '/services'
     },
